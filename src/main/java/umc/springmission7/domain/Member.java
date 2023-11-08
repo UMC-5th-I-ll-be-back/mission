@@ -62,6 +62,6 @@ public class Member extends BaseEntity {
     private List<Review> reviewList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<Review> memberMissionList = new ArrayList<>();
+    private List<MemberMission> memberMissionList = new ArrayList<>();
 
 }
