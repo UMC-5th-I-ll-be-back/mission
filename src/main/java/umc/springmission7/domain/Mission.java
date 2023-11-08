@@ -2,6 +2,7 @@ package umc.springmission7.domain;
 
 import lombok.*;
 import umc.springmission7.domain.common.BaseEntity;
+import umc.springmission7.domain.mapping.MemberMission;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -29,6 +30,6 @@ public class Mission extends BaseEntity {
     private Store store;
 
     @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
-    private List<Review> memberMissionList = new ArrayList<>();
+    private List<MemberMission> memberMissionList = new ArrayList<>();
 
 }
