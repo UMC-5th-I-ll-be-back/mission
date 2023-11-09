@@ -33,8 +33,8 @@ public class MissionController {
         return missionService.getMissionById(mission_id);
     }
 
-    @PatchMapping("/{mission_id}")
-    public ResponseEntity<Void> updateMission (@PathVariable Long mission_id, @ModelAttribute MissionRequestDto missionRequestDto) {
+    @PutMapping ("/{mission_id}")
+    public ResponseEntity<Void> updateMission (@PathVariable("mission_id") Long mission_id,@RequestBody MissionRequestDto missionRequestDto) {
         missionService.updateMission(mission_id, missionRequestDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -45,5 +45,4 @@ public class MissionController {
         missionService.deleteMission(mission_id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 }

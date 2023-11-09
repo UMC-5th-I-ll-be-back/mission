@@ -43,9 +43,9 @@ public class Mission extends BaseEntity {
     private List<MemberMission> memberMissionList = new ArrayList<>();
 
     public void updateMissionDetail(Integer reward, String content, LocalDate deadline){
+        this.reward = reward;
         this.content = content;
         this.deadline = deadline;
-        this.reward = reward;
     }
 
 }

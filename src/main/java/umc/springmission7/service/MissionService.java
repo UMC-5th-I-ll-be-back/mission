@@ -16,7 +16,8 @@ import java.util.Optional;
 @Service
 public class MissionService {
     // TODO: 2023/11/05 MemberMissionService 주입
-    private MissionRepository missionRepository;
+
+    private final MissionRepository missionRepository;
 
     public Mission addMission(MissionRequestDto requestDto){
         Integer reward = requestDto.getReward();
@@ -38,13 +39,25 @@ public class MissionService {
     }
 
     public ResponseEntity<Void> updateMission(Long missionId, MissionRequestDto missionRequestDto){
-        Optional<Mission> mission = missionRepository.findById(missionId);
+        Mission mission = getMissionById(missionId);
+
         Integer newReward = missionRequestDto.getReward();
         String newContent = missionRequestDto.getContent();
         LocalDate newDeadLine = missionRequestDto.getDeadline();
 
+        // 값이 들어오지 않았을 경우 기존 값으로 유지
+        if (newReward == null) {
+            newReward = mission.getReward();
+        }
+        if (newContent == null) {
+            newContent = mission.getContent();
+        }
+        if (newDeadLine == null) {
+            newDeadLine = mission.getDeadline();
+        }
 
-        mission.get().updateMissionDetail(newReward, newContent, newDeadLine);
+        mission.updateMissionDetail(newReward, newContent, newDeadLine);
+        missionRepository.save(mission);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -52,7 +65,6 @@ public class MissionService {
         Mission mission = getMissionById(missionId);
         missionRepository.delete(mission);
     }
-
 
 
 }
