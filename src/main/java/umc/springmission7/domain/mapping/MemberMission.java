@@ -9,6 +9,7 @@ import umc.springmission7.domain.enums.MissionStatus;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "member_mission")
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

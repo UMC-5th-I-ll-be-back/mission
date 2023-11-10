@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import umc.springmission7.apiPayload.ApiResponse;
 import umc.springmission7.domain.Mission;
+import umc.springmission7.domain.enums.MissionStatus;
 import umc.springmission7.domain.mapping.MemberMission;
 import umc.springmission7.web.dto.MemberMissionResponse;
 import umc.springmission7.web.dto.TempResponse;
@@ -21,7 +22,7 @@ public class MemberMissionController {
     private final MemberMissionService memberMissionService;
 
     @GetMapping("/missions")
-    public ResponseEntity<List<MemberMission>> getMissions(@RequestParam("status") String status) {
+    public ResponseEntity<List<MemberMission>> getMissions(@RequestParam("status") MissionStatus status) {
         List<MemberMission> memberMissions;
         memberMissions = memberMissionService.getMissionsByStatus(status);
         return ResponseEntity.ok(memberMissions);

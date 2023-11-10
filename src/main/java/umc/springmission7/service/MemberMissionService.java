@@ -15,9 +15,9 @@ public class MemberMissionService {
         this.memberMissionRepository = memberMissionRepository;
     }
 
-    public List<MemberMission> getMissionsByStatus(String status) {
-        MissionStatus missionStatus = MissionStatus.valueOf(status);
-        return memberMissionRepository.findByStatus(missionStatus);
+    public List<MemberMission> getMissionsByStatus(MissionStatus status) {
+//        MissionStatus missionStatus = MissionStatus.valueOf(status);
+        return memberMissionRepository.findByStatus(status);
     }
 
 }
