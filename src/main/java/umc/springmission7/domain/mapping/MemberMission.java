@@ -4,6 +4,7 @@ import lombok.*;
 import umc.springmission7.domain.Member;
 import umc.springmission7.domain.Mission;
 import umc.springmission7.domain.common.BaseEntity;
+import umc.springmission7.domain.enums.MemberMissionStatus;
 import umc.springmission7.domain.enums.MissionStatus;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ public class MemberMission extends BaseEntity {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private MissionStatus status;
+    private MemberMissionStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
